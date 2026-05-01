@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
-import Navbar from "../../components/Navbar";
-import MenuNav from "../../components/Navbar/MenuNav";
+import AppLayout from "../../components/AppLayout";
 import Breadcrumb from "../../components/Breadcrumb";
-import Newsletter from "../../components/Newsletter";
-import Footer from "../../components/Footer";
 import { BsHeart, BsTruck, BsShieldCheck, BsArrowRepeat } from "react-icons/bs";
 import { HiOutlineShoppingBag, HiStar, HiMinus, HiPlus } from "react-icons/hi2";
 import {
@@ -110,15 +107,7 @@ const ProductDetails = () => {
   ];
 
   return (
-    <>
-      {/* Header */}
-      <div className="bg-white">
-        <div className="container">
-          <Navbar />
-        </div>
-      </div>
-      <MenuNav isContainer={true} />
-
+    <AppLayout>
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
@@ -416,11 +405,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
-
-      {/* Newsletter & Footer */}
-      <Newsletter />
-      <Footer />
-    </>
+    </AppLayout>
   );
 };
 

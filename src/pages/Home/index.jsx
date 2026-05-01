@@ -3,24 +3,17 @@ import BestDeals from "../../components/BestDeals";
 import BrandLogos from "../../components/BrandsSection";
 import FeaturedProducts from "../../components/FeaturedProducts";
 import Featuers from "../../components/FeaturesSection";
-import Footer from "../../components/Footer";
 import HotDeals from "../../components/HotDeals";
 import InstagramFeed from "../../components/InstagramFeed";
-import Navbar from "../../components/Navbar";
-import MenuNav from "../../components/Navbar/MenuNav";
-import Newsletter from "../../components/Newsletter";
 import PopularCtegories from "../../components/PopularCategorySection";
 import PopularProducts from "../../components/PopularProducts";
 import TestimonialsSection from "../../components/TestimonialsSection";
+import AppLayout from "../../components/AppLayout";
 import image from "/Discount-Bannar.png";
 
 const Home = () => {
   return (
-    <>
-      <div className="container">
-        <Navbar />
-      </div>
-      <MenuNav isContainer={true} />
+    <AppLayout>
       <AddsSection />
       <Featuers />
       <PopularCtegories />
@@ -36,9 +29,7 @@ const Home = () => {
       <TestimonialsSection />
       <BrandLogos />
       <InstagramFeed />
-      <Newsletter />
-      <Footer />
-    </>
+    </AppLayout>
   );
 };
 

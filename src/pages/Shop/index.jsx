@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "../../components/Navbar";
-import MenuNav from "../../components/Navbar/MenuNav";
+import AppLayout from "../../components/AppLayout";
 import Breadcrumb from "../../components/Breadcrumb";
 import ShopFilter from "../../components/ShopFilter";
 import ShopProducts from "../../components/ShopProducts";
-import Newsletter from "../../components/Newsletter";
-import Footer from "../../components/Footer";
 
 const Shop = () => {
   const [filters, setFilters] = useState({
@@ -20,15 +17,7 @@ const Shop = () => {
   };
 
   return (
-    <>
-      {/* Header */}
-      <div className="bg-white">
-        <div className="container">
-          <Navbar />
-        </div>
-      </div>
-      <MenuNav isContainer={true} />
-
+    <AppLayout>
       {/* Breadcrumb */}
       <Breadcrumb />
 
@@ -50,11 +39,7 @@ const Shop = () => {
           </div>
         </div>
       </section>
-
-      {/* Newsletter & Footer */}
-      <Newsletter />
-      <Footer />
-    </>
+    </AppLayout>
   );
 };
 

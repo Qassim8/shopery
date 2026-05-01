@@ -14,6 +14,12 @@ const MenuNav = ({ isContainer }) => {
     { title: "Contact", href: "/" },
   ];
 
+  const accountLinks = [
+    { title: "My Account", href: "/account" },
+    { title: "Cart", href: "/cart" },
+    { title: "Wishlist", href: "/wishlist" },
+  ];
+
   return (
     <div className="py-4 bg-gray-900">
       <div className="flex md:hidden justify-between items-center px-3">
@@ -66,11 +72,38 @@ const MenuNav = ({ isContainer }) => {
               </NavLink>
             ))}
 
+            {/* Account Links Mobile */}
+            <div className="border-t border-gray-700 pt-4 mt-2">
+              {accountLinks.map(({ title, href }) => (
+                <NavLink
+                  key={title}
+                  onClick={() => setOpen(false)}
+                  className="block hover:text-white transition py-1"
+                  to={href}
+                >
+                  {title}
+                </NavLink>
+              ))}
+            </div>
+
             <div className="flex items-center gap-2 text-white mt-4 border-t border-gray-700 pt-4">
               <LuPhoneCall />
               <span>(219) 555-0114</span>
             </div>
           </div>
+        </div>
+
+        {/* Account Links */}
+        <div className="hidden lg:flex gap-6 text-gray-400">
+          {accountLinks.map(({ title, href }) => (
+            <NavLink
+              key={title}
+              className="hover:text-white duration-200"
+              to={href}
+            >
+              {title}
+            </NavLink>
+          ))}
         </div>
 
         {/* Phone */}
