@@ -9,26 +9,31 @@ import ProductCard from "../ProductsCard";
 
 const products = [
   {
+    id: 1,
     image: apple,
     title: "Green Apple",
     price: 14.99,
   },
   {
+    id: 2,
     image: tomato,
     title: "Fresh Indian Malta",
     price: 10.99,
   },
   {
+    id: 3,
     image: capsicum,
     title: "Chinese cabbage",
     price: 22.85,
   },
   {
+    id: 4,
     image: potato,
     title: "Big Potatoes",
     price: 35.68,
   },
   {
+    id: 5,
     image: mango,
     title: "Green Capsicum",
     price: 12.68,

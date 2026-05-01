@@ -13,18 +13,18 @@ const ShopProducts = ({ filters }) => {
   const [sortBy, setSortBy] = useState("newest");
 
   const products = [
-    { image: corn, title: "Green Apple", price: 14.99 },
-    { image: tomato, title: "Fresh Indian Malta", price: 10.99 },
-    { image: capsicum, title: "Chinese cabbage", price: 22.85 },
-    { image: potato, title: "Green Lettuce", price: 4.99 },
-    { image: apple, title: "Eggplant", price: 11.0 },
-    { image: mango, title: "Big Potatoes", price: 35.68 },
-    { image: corn, title: "Corn", price: 17.29 },
-    { image: tomato, title: "Fresh Cauliflower", price: 11.0 },
-    { image: capsicum, title: "Green Capsicum", price: 12.68 },
-    { image: potato, title: "Green Chill", price: 34.0 },
-    { image: apple, title: "Red Apples", price: 16.5 },
-    { image: mango, title: "Mango", price: 18.99 },
+    { id: 1, image: corn, title: "Green Apple", price: 14.99 },
+    { id: 2, image: tomato, title: "Fresh Indian Malta", price: 10.99 },
+    { id: 3, image: capsicum, title: "Chinese cabbage", price: 22.85 },
+    { id: 4, image: potato, title: "Green Lettuce", price: 4.99 },
+    { id: 5, image: apple, title: "Eggplant", price: 11.0 },
+    { id: 6, image: mango, title: "Big Potatoes", price: 35.68 },
+    { id: 7, image: corn, title: "Corn", price: 17.29 },
+    { id: 8, image: tomato, title: "Fresh Cauliflower", price: 11.0 },
+    { id: 9, image: capsicum, title: "Green Capsicum", price: 12.68 },
+    { id: 10, image: potato, title: "Green Chill", price: 34.0 },
+    { id: 11, image: apple, title: "Red Apples", price: 16.5 },
+    { id: 12, image: mango, title: "Mango", price: 18.99 },
   ];
 
   const getSortedProducts = () => {
