@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { FaPhoneVolume } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import LogoIcon from "/logo-tree.png";
+import { LuPhoneCall } from "react-icons/lu";
 
 const MenuNav = ({ isContainer }) => {
   const [open, setOpen] = useState(false);
+  const links = [
+    { title: "Home", href: "/" },
+    { title: "Shop", href: "/shop" },
+    { title: "About Us", href: "/" },
+    { title: "Contact", href: "/" },
+  ];
 
   return (
     <div className="py-4 bg-gray-900">
@@ -32,28 +38,15 @@ const MenuNav = ({ isContainer }) => {
       >
         {/* Links */}
         <div className="hidden lg:flex gap-8 text-gray-400">
-          <div className="flex items-center gap-1 hover:text-white duration-200">
-            <Link to={"/"}>Home</Link>
-            <IoIosArrowDown />
-          </div>
-          <div className="flex items-center gap-1 hover:text-white duration-200">
-            <Link to={"/shop"}>Shop</Link>
-            <IoIosArrowDown />
-          </div>
-          <div className="flex items-center gap-1 hover:text-white duration-200">
-            <Link to={"/"}>Pages</Link>
-            <IoIosArrowDown />
-          </div>
-          <div className="flex items-center gap-1 hover:text-white duration-200">
-            <Link to={"/"}>Blog</Link>
-            <IoIosArrowDown />
-          </div>
-          <Link className="hover:text-white duration-200" to={"/"}>
-            About Us
-          </Link>
-          <Link className="hover:text-white duration-200" to={"/"}>
-            Contact Us
-          </Link>
+          {links.map(({ title, href }) => (
+            <NavLink
+              key={title}
+              className="hover:text-white duration-200"
+              to={href}
+            >
+              {title}
+            </NavLink>
+          ))}
         </div>
         {/* Mobile Menu */}
         <div
@@ -62,21 +55,19 @@ const MenuNav = ({ isContainer }) => {
           }`}
         >
           <div className="flex flex-col gap-5 px-6 py-6 text-gray-300">
-            {["Home", "Shop", "Pages", "Blog", "About Us", "Contact Us"].map(
-              (item) => (
-                <Link
-                  key={item}
-                  onClick={() => setOpen(false)}
-                  className="hover:text-white transition"
-                  to="/"
-                >
-                  {item}
-                </Link>
-              )
-            )}
+            {links.map(({ title, href }) => (
+              <NavLink
+                key={title}
+                onClick={() => setOpen(false)}
+                className="hover:text-white transition"
+                to={href}
+              >
+                {title}
+              </NavLink>
+            ))}
 
             <div className="flex items-center gap-2 text-white mt-4 border-t border-gray-700 pt-4">
-              <FaPhoneVolume />
+              <LuPhoneCall />
               <span>(219) 555-0114</span>
             </div>
           </div>
@@ -84,7 +75,7 @@ const MenuNav = ({ isContainer }) => {
 
         {/* Phone */}
         <div className="hidden sm:flex text-white items-center gap-2">
-          <FaPhoneVolume />
+          <LuPhoneCall />
           <span>(219) 555-0114</span>
         </div>
       </div>

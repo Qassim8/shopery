@@ -2,6 +2,7 @@ import { RiSearchLine } from "react-icons/ri";
 import LogoIcon from "/logo-tree.png";
 import { BsHeart } from "react-icons/bs";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import SearchBar from "../SearchBar";
 
 const MainNav = () => {
   return (
@@ -10,19 +11,8 @@ const MainNav = () => {
         <img className="w-full object-contain" src={LogoIcon} />
         <h2 className="text-3xl font-medium">Ecobazar</h2>
       </div>
-      <form className="w-full lg:w-125 flex items-center border border-gray-100 rounded-md overflow-hidden">
-        <div className="flex items-center gap-2 px-4 grow">
-          <RiSearchLine className="text-xl" />
-          <input
-            className="outline-0 grow"
-            type="search"
-            placeholder="Search"
-          />
-        </div>
-        <button className="py-3.5 px-6 text-sm text-white bg-(--main-color)">
-          Search
-        </button>
-      </form>
+      {/* Search Bar */}
+      <SearchBar />
       <div className="flex items-center gap-4">
         <BsHeart className="text-2xl" />
         <div className="w-px h-6 bg-gray-300"></div>

@@ -1,4 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
+import ShopNowBtn from "../ShopNowBtn";
 
 const AddsSection = () => {
   return (
@@ -21,10 +22,7 @@ const AddsSection = () => {
                 free shipping on all you order.
               </div>
             </div>
-            <button className="flex justify-center items-center gap-3 text-(--main-color) bg-white w-36 md:w-47.5 h-10 md:h-12.5 rounded-[53px]">
-              <span>Shop Now</span>
-              <FaArrowRight />
-            </button>
+            <ShopNowBtn color="(--main-color)" bg="white" needed={1} />
           </div>
         </div>
         <div className="relative h-72 rounded-[10px] p-10 bg-[url('/second-add.jpg')] bg-cover overflow-hidden transform scale-x-[-1]">
@@ -34,10 +32,7 @@ const AddsSection = () => {
               75% OFF
             </h2>
             <p className="py-2 text-gray-600">Only fruite & Vigitable</p>
-            <button className="flex items-center gap-3 text-(--main-color)">
-              <span>Shop Now</span>
-              <FaArrowRight />
-            </button>
+            <ShopNowBtn color="(--main-color)" start={1} />
           </div>
         </div>
         <div className="relative h-72 rounded-[10px] p-10 text-center bg-[url('/third-add.jpg')] bg-cover overflow-hidden">
@@ -47,10 +42,7 @@ const AddsSection = () => {
             <h2 className="font-bold text-[24px] md:text-[32px] leading-[120%]">
               Special Products Deal of the Month
             </h2>
-            <button className="flex justify-center items-center gap-3 text-[(--main-color)]">
-              <span>Shop Now</span>
-              <FaArrowRight />
-            </button>
+            <ShopNowBtn color="(--main-color)" />
           </div>
         </div>
       </div>

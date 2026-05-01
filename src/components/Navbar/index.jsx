@@ -1,5 +1,5 @@
-import NavHead from "../NavHead";
-import MainNav from "../MainNav";
+import NavHead from "./NavHead";
+import MainNav from "./MainNav";
 
 const Navbar = () => {
   return (
