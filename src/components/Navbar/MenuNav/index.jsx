@@ -10,8 +10,8 @@ const MenuNav = ({ isContainer }) => {
   const links = [
     { title: "Home", href: "/" },
     { title: "Shop", href: "/shop" },
-    { title: "About Us", href: "/" },
-    { title: "Contact", href: "/" },
+    { title: "About Us", href: "/about" },
+    { title: "Contact", href: "/contact" },
   ];
 
   const accountLinks = [

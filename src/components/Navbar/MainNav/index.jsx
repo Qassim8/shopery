@@ -22,14 +22,14 @@ const MainNav = () => {
         <div className="flex items-center gap-4">
           <Link
             to="/wishlist"
-            className="hover:text-[var(--main-color)] transition-colors"
+            className="hover:text-(--main-color) transition-colors"
           >
             <BsHeart className="text-2xl" />
           </Link>
           <div className="w-px h-6 bg-gray-300"></div>
           <button
             onClick={() => setIsCartOpen(true)}
-            className="flex items-center gap-3 hover:text-[var(--main-color)] transition-colors"
+            className="flex items-center gap-3 hover:text-(--main-color) transition-colors"
           >
             <HiOutlineShoppingBag className="text-2xl" />
             <div className="flex flex-col gap-1.5">

@@ -4,6 +4,9 @@
 :root {
   --main-color: rgba(0, 178, 7, 1);
 }
+body {
+  font-family: "Poppins", sans-serif;
+}
 .container {
   @apply container px-3 md:px-0 xl:max-w-7xl lg:max-w-4xl md:max-w-2xl mx-auto;
 }
