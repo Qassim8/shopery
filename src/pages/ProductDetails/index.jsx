@@ -10,6 +10,7 @@ import {
   FaPinterestP,
   FaInstagram,
 } from "react-icons/fa";
+import ProductCard from "../../components/ProductsCard";
 
 // Mock product data - in real app this would come from API
 const getProductById = (id) => {
@@ -116,22 +117,15 @@ const ProductDetails = () => {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Images */}
-            <div className="space-y-4">
-              <div className="bg-gray-50 rounded-lg p-8 flex justify-center items-center">
-                <img
-                  src={productImages[selectedImage]}
-                  alt={product.title}
-                  className="max-w-full h-96 object-contain"
-                />
-              </div>
-              <div className="flex gap-4 overflow-x-auto">
+            <div className="space-y-4 flex gap-5">
+              <div className="grow flex flex-col justify-center gap-4 ">
                 {productImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`flex-shrink-0 w-20 h-20 bg-gray-50 rounded-lg p-2 border-2 transition-colors ${
+                    className={`shrink-0 w-16 md:w-20 h-16 md:h-20 bg-gray-50 rounded-lg p-2 border-2 transition-colors ${
                       selectedImage === index
-                        ? "border-[var(--main-color)]"
+                        ? "border-(--main-color)"
                         : "border-gray-200"
                     }`}
                   >
@@ -143,10 +137,17 @@ const ProductDetails = () => {
                   </button>
                 ))}
               </div>
+              <div className="rounded-lg p-8 flex justify-center items-center">
+                <img
+                  src={productImages[selectedImage]}
+                  alt={product.title}
+                  className="max-w-full h-60 md:h-80 object-contain"
+                />
+              </div>
             </div>
 
             {/* Product Info */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                   {product.title}
@@ -169,7 +170,7 @@ const ProductDetails = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="text-4xl font-bold text-[var(--main-color)]">
+                  <span className="text-4xl font-bold text-(--main-color)">
                     ${product.price.toFixed(2)}
                   </span>
                   {product.originalPrice && (
@@ -178,86 +179,59 @@ const ProductDetails = () => {
                     </span>
                   )}
                   {product.originalPrice && (
-                    <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-red-100 text-red-600 px-1 md:px-3 py-1 rounded-full text-[12px] md:text-sm font-semibold">
                       Save ${(product.originalPrice - product.price).toFixed(2)}
                     </span>
                   )}
                 </div>
               </div>
 
-              {/* Quantity Selector */}
-              <div className="flex items-center gap-6">
-                <span className="font-semibold text-gray-800">Quantity:</span>
-                <div className="flex items-center border border-gray-200 rounded-lg">
+              {/* Product Features */}
+              <div className="border-y border-gray-200 py-6">
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="grow flex items-center justify-between border border-gray-200 rounded-full p-2">
                   <button
                     onClick={decreaseQuantity}
-                    className="w-12 h-12 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    className="w-8 h-8 flex items-center justify-center rounded-full cursor-pointer bg-gray-200 hover:bg-gray-50 transition-colors"
                   >
-                    <HiMinus />
+                    <HiMinus className="text-sm" />
                   </button>
-                  <span className="w-16 text-center font-semibold text-lg">
+                  <span className="w-10 text-center font-semibold">
                     {quantity}
                   </span>
                   <button
                     onClick={increaseQuantity}
-                    className="w-12 h-12 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    className="w-8 h-8 flex items-center justify-center rounded-full cursor-pointer bg-gray-200 hover:bg-gray-50 transition-colors"
                   >
-                    <HiPlus />
+                    <HiPlus className="text-sm" />
                   </button>
                 </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-4">
-                <button className="flex-1 bg-[var(--main-color)] text-white py-4 px-8 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-3 text-lg">
-                  <HiOutlineShoppingBag className="text-xl" />
+                <button className="grow-5 cursor-pointer bg-(--main-color) text-white py-3 px-6 rounded-full font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
                   Add to Cart
+                  <HiOutlineShoppingBag size={16} />
                 </button>
-                <button className="w-14 h-14 border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <BsHeart className="text-xl" />
+                <button className="w-12 h-12 cursor-pointer bg-(--main-color)/10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors">
+                  <BsHeart size={18} />
                 </button>
-              </div>
-
-              {/* Product Features */}
-              <div className="border-t border-gray-200 pt-6">
-                <h3 className="font-semibold text-gray-800 mb-4">
-                  Why Choose This Product?
-                </h3>
-                <ul className="space-y-2">
-                  {product.features.map((feature, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center gap-3 text-sm text-gray-600"
-                    >
-                      <BsShieldCheck className="text-green-500 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               {/* Product Details */}
               <div className="border-t border-gray-200 pt-6 space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">SKU:</span>
-                  <span className="font-semibold">{product.sku}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Category:</span>
-                  <span className="font-semibold">{product.category}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Stock:</span>
-                  <span className="font-semibold text-green-600">
-                    {product.stock}
-                  </span>
-                </div>
-                <div className="flex justify-between">
                   <span className="text-gray-600">Weight:</span>
                   <span className="font-semibold">{product.weight}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Origin:</span>
+                  <span className="text-gray-600">Tag:</span>
                   <span className="font-semibold">{product.origin}</span>
                 </div>
               </div>
@@ -272,7 +246,7 @@ const ProductDetails = () => {
                     (Icon, index) => (
                       <button
                         key={index}
-                        className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[var(--main-color)] hover:text-white transition-colors"
+                        className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-(--main-color) hover:text-white transition-colors"
                       >
                         <Icon />
                       </button>
@@ -284,15 +258,15 @@ const ProductDetails = () => {
           </div>
 
           {/* Product Tabs */}
-          <div className="mt-16 border-t border-gray-200">
-            <div className="flex gap-8 mt-8">
+          <div className="mt-4 border-gray-200">
+            <div className="flex justify-center gap-8 mt-8 border-b border-gray-300">
               {["description", "nutrition", "reviews"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`pb-4 font-semibold transition-colors capitalize ${
+                  className={`pb-4 font-semibold transition-colors capitalize cursor-pointer ${
                     activeTab === tab
-                      ? "text-[var(--main-color)] border-b-2 border-[var(--main-color)]"
+                      ? "text-(--main-color) border-b-2 border-(--main-color)"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -307,7 +281,7 @@ const ProductDetails = () => {
                   <p className="text-gray-600 leading-relaxed">
                     {product.description}
                   </p>
-                  <div className="mt-6">
+                  <div className="mt-5">
                     <h4 className="font-semibold text-gray-800 mb-3">
                       Key Features:
                     </h4>
@@ -317,7 +291,7 @@ const ProductDetails = () => {
                           key={index}
                           className="flex items-center gap-3 text-gray-600"
                         >
-                          <BsShieldCheck className="text-green-500 flex-shrink-0" />
+                          <BsShieldCheck className="text-(--main-color) shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -327,20 +301,29 @@ const ProductDetails = () => {
               )}
 
               {activeTab === "nutrition" && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {Object.entries(product.nutrition).map(([key, value]) => (
-                    <div
-                      key={key}
-                      className="text-center p-4 bg-gray-50 rounded-lg"
-                    >
-                      <div className="text-2xl font-bold text-[var(--main-color)]">
-                        {value}
-                      </div>
-                      <div className="text-sm text-gray-600 capitalize">
-                        {key}
-                      </div>
-                    </div>
-                  ))}
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">SKU:</span>
+                    <span className="font-semibold">{product.sku}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Category:</span>
+                    <span className="font-semibold">{product.category}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Stock:</span>
+                    <span className="font-semibold text-green-600">
+                      {product.stock}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Weight:</span>
+                    <span className="font-semibold">{product.weight}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Origin:</span>
+                    <span className="font-semibold">{product.origin}</span>
+                  </div>
                 </div>
               )}
 
@@ -377,29 +360,12 @@ const ProductDetails = () => {
 
           {/* Related Products */}
           <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            <h2 className="text-center text-2xl font-bold text-gray-900 mb-8">
               Related Products
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
               {relatedProducts.map((relatedProduct) => (
-                <div
-                  key={relatedProduct.id}
-                  className="bg-white border border-gray-200 rounded-lg p-4 hover:border-[var(--main-color)] transition-colors group"
-                >
-                  <div className="flex justify-center items-center h-32 mb-4">
-                    <img
-                      src={relatedProduct.image}
-                      alt={relatedProduct.title}
-                      className="max-w-full h-24 object-contain"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-gray-800 text-sm mb-2 group-hover:text-[var(--main-color)] transition-colors">
-                    {relatedProduct.title}
-                  </h3>
-                  <p className="text-[var(--main-color)] font-bold">
-                    ${relatedProduct.price.toFixed(2)}
-                  </p>
-                </div>
+                <ProductCard item={relatedProduct} key={relatedProduct.id} />
               ))}
             </div>
           </div>

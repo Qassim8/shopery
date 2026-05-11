@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, Outlet } from "react-router";
 import AppLayout from "../../components/AppLayout";
 import {
   BsArrowRight,
@@ -15,6 +15,7 @@ import {
   BsXCircle,
 } from "react-icons/bs";
 import { BiSolidMapPin } from "react-icons/bi";
+import DashboardSidebar from "../../components/DashboardSidebar";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -59,16 +60,6 @@ const Dashboard = () => {
     { id: 3, name: "Whole Grain Bread", price: 8.5, image: "/bread.jpg" },
   ];
 
-  const menuItems = [
-    { id: "overview", label: "Overview", icon: BsPerson },
-    { id: "orders", label: "My Orders", icon: BsBox },
-    { id: "wishlist", label: "Wishlist", icon: BsHeart },
-    { id: "payment", label: "Payment Methods", icon: BsCreditCard },
-    { id: "addresses", label: "Addresses", icon: BiSolidMapPin },
-    { id: "notifications", label: "Notifications", icon: BsBell },
-    { id: "settings", label: "Settings", icon: BsGear },
-  ];
-
   const getStatusIcon = (status) => {
     switch (status) {
       case "delivered":
@@ -98,7 +89,7 @@ const Dashboard = () => {
   const renderOverview = () => (
     <div className="space-y-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-[var(--main-color)] to-green-600 text-white p-8 rounded-lg">
+      <div className="bg-linear-to-r from-(--main-color) to-green-600 text-white p-8 rounded-lg">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
             <BsPerson className="text-2xl" />
@@ -118,7 +109,7 @@ const Dashboard = () => {
               <p className="text-gray-600">Total Orders</p>
               <p className="text-3xl font-bold text-gray-900">24</p>
             </div>
-            <BsBox className="text-3xl text-[var(--main-color)]" />
+            <BsBox className="text-3xl text-(--main-color)" />
           </div>
         </div>
 
@@ -155,7 +146,7 @@ const Dashboard = () => {
             </h3>
             <Link
               to="/orders"
-              className="text-[var(--main-color)] hover:text-green-700 flex items-center gap-1"
+              className="text-(--main-color) hover:text-green-700 flex items-center gap-1"
             >
               View All <BsArrowRight />
             </Link>
@@ -195,7 +186,7 @@ const Dashboard = () => {
             <h3 className="text-xl font-semibold text-gray-900">Wishlist</h3>
             <Link
               to="/wishlist"
-              className="text-[var(--main-color)] hover:text-green-700 flex items-center gap-1"
+              className="text-(--main-color) hover:text-green-700 flex items-center gap-1"
             >
               View All <BsArrowRight />
             </Link>
@@ -214,7 +205,7 @@ const Dashboard = () => {
                   <p className="font-medium text-gray-900">{item.name}</p>
                   <p className="text-sm text-gray-600">${item.price}</p>
                 </div>
-                <button className="text-[var(--main-color)] hover:text-green-700">
+                <button className="text-(--main-color) hover:text-green-700">
                   <BsArrowRight />
                 </button>
               </div>
@@ -230,7 +221,7 @@ const Dashboard = () => {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">My Orders</h2>
         <div className="flex gap-2">
-          <select className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)]">
+          <select className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color)">
             <option>All Orders</option>
             <option>Delivered</option>
             <option>Shipped</option>
@@ -272,11 +263,11 @@ const Dashboard = () => {
               <div className="flex gap-2">
                 <Link
                   to={`/orders/${order.id}`}
-                  className="px-4 py-2 text-[var(--main-color)] border border-[var(--main-color)] rounded-lg hover:bg-[var(--main-color)] hover:text-white transition-colors"
+                  className="px-4 py-2 text-(--main-color) border border-(--main-color) rounded-lg hover:bg-(--main-color) hover:text-white transition-colors"
                 >
                   View Details
                 </Link>
-                <button className="px-4 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors">
+                <button className="px-4 py-2 bg-(--main-color) text-white rounded-lg hover:bg-green-700 transition-colors">
                   Reorder
                 </button>
               </div>
@@ -303,14 +294,14 @@ const Dashboard = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                <p className="text-lg font-bold text-[var(--main-color)]">
+                <p className="text-lg font-bold text-(--main-color)">
                   ${item.price}
                 </p>
               </div>
             </div>
 
             <div className="flex gap-2">
-              <button className="flex-1 bg-[var(--main-color)] text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">
+              <button className="flex-1 bg-(--main-color) text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">
                 Add to Cart
               </button>
               <button className="p-2 text-gray-400 hover:text-red-500">
@@ -327,7 +318,7 @@ const Dashboard = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Payment Methods</h2>
-        <button className="bg-[var(--main-color)] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+        <button className="bg-(--main-color) text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
           Add New Card
         </button>
       </div>
@@ -362,7 +353,7 @@ const Dashboard = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Addresses</h2>
-        <button className="bg-[var(--main-color)] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+        <button className="bg-(--main-color) text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
           Add New Address
         </button>
       </div>
@@ -412,7 +403,7 @@ const Dashboard = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" className="sr-only peer" defaultChecked />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
             </label>
           </div>
         </div>
@@ -427,7 +418,7 @@ const Dashboard = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" className="sr-only peer" />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
             </label>
           </div>
         </div>
@@ -452,7 +443,7 @@ const Dashboard = () => {
               <input
                 type="text"
                 defaultValue="John"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color)"
               />
             </div>
             <div>
@@ -462,7 +453,7 @@ const Dashboard = () => {
               <input
                 type="text"
                 defaultValue="Doe"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color)"
               />
             </div>
             <div>
@@ -472,7 +463,7 @@ const Dashboard = () => {
               <input
                 type="email"
                 defaultValue={user.email}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color)"
               />
             </div>
             <div>
@@ -482,7 +473,7 @@ const Dashboard = () => {
               <input
                 type="tel"
                 defaultValue="+1 (555) 123-4567"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color)"
               />
             </div>
           </div>
@@ -491,11 +482,11 @@ const Dashboard = () => {
         <div className="pt-6 border-t">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Security</h3>
           <div className="space-y-4">
-            <button className="text-[var(--main-color)] hover:text-green-700 font-medium">
+            <button className="text-(--main-color) hover:text-green-700 font-medium">
               Change Password
             </button>
             <br />
-            <button className="text-[var(--main-color)] hover:text-green-700 font-medium">
+            <button className="text-(--main-color) hover:text-green-700 font-medium">
               Enable Two-Factor Authentication
             </button>
           </div>
@@ -534,39 +525,14 @@ const Dashboard = () => {
   return (
     <AppLayout>
       <div className="container py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="md:flex gap-8">
           {/* Sidebar */}
-          <div className="lg:w-1/4">
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <div className="text-center mb-6">
-                <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <BsPerson className="text-3xl text-gray-400" />
-                </div>
-                <h3 className="font-semibold text-gray-900">{user.name}</h3>
-                <p className="text-sm text-gray-600">{user.email}</p>
-              </div>
-
-              <nav className="space-y-2">
-                {menuItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                      activeTab === item.id
-                        ? "bg-[var(--main-color)] text-white"
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    <item.icon className="text-xl" />
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
+          <DashboardSidebar />
 
           {/* Main Content */}
-          <div className="lg:w-3/4">{renderContent()}</div>
+          <div className="grow w-full lg:w-3/4">
+            <Outlet />
+          </div>
         </div>
       </div>
     </AppLayout>

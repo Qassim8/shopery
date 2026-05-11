@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HiStar } from "react-icons/hi2";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 
 const ShopFilter = ({ onFilterChange }) => {
@@ -56,7 +57,12 @@ const ShopFilter = ({ onFilterChange }) => {
 
   const ratings = [5, 4, 3, 2, 1];
 
-  const brands = ["Brand A", "Brand B", "Brand C", "Brand D"];
+  const brands = [
+    { id: 1, value: "healthy", name: "Healthy" },
+    { id: 2, value: "low-fat", name: "Low Fat" },
+    { id: 3, value: "brand-c", name: "Brand C" },
+    { id: 4, value: "brand-d", name: "Brand D" },
+  ];
 
   const FilterSection = ({ title, section, children }) => (
     <div className="border-b border-gray-200 last:border-b-0 pb-4 last:pb-0">
@@ -76,11 +82,9 @@ const ShopFilter = ({ onFilterChange }) => {
   );
 
   return (
-    <aside className="w-full lg:w-64 bg-white border border-gray-200 rounded-lg p-6">
-      <h2 className="text-lg font-bold text-gray-800 mb-6">Filters</h2>
-
+    <aside className="w-full  bg-white border border-gray-200 rounded-lg p-6">
       {/* Category Filter */}
-      <FilterSection title="Category" section="category">
+      <FilterSection title="All Categories" section="category">
         <div className="space-y-2">
           {categories.map((category) => (
             <label
@@ -88,10 +92,10 @@ const ShopFilter = ({ onFilterChange }) => {
               className="flex items-center gap-3 cursor-pointer group"
             >
               <input
-                type="checkbox"
+                type="radio"
                 checked={filters.category.includes(category)}
                 onChange={() => handleCategoryChange(category)}
-                className="w-4 h-4 accent-[var(--main-color)] rounded cursor-pointer"
+                className="w-4 h-4 accent-(--main-color) rounded cursor-pointer"
               />
               <span className="text-sm text-gray-600 group-hover:text-(--main-color) transition-colors">
                 {category}
@@ -102,27 +106,21 @@ const ShopFilter = ({ onFilterChange }) => {
       </FilterSection>
 
       {/* Price Filter */}
-      <FilterSection title="Price Range" section="price">
+      <FilterSection title="Price" section="price">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">$0</span>
             <span className="text-sm font-semibold text-gray-800">
               ${filters.priceRange[1]}
             </span>
           </div>
           <input
             type="range"
-            min="0"
+            min="5"
             max="100"
             value={filters.priceRange[1]}
             onChange={handlePriceChange}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--main-color)]"
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-(--main-color)"
           />
-          <div className="pt-2">
-            <button className="w-full py-2 bg-[var(--main-color)] text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
-              Apply
-            </button>
-          </div>
         </div>
       </FilterSection>
 
@@ -138,18 +136,16 @@ const ShopFilter = ({ onFilterChange }) => {
                 type="checkbox"
                 checked={filters.rating.includes(rating)}
                 onChange={() => handleRatingChange(rating)}
-                className="w-4 h-4 accent-[var(--main-color)] rounded cursor-pointer"
+                className="w-4 h-4 accent-(--main-color) rounded cursor-pointer"
               />
               <span className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <span
+                  <HiStar
                     key={i}
                     className={`text-lg ${
                       i < rating ? "text-amber-500" : "text-gray-300"
                     }`}
-                  >
-                    ★
-                  </span>
+                  />
                 ))}
               </span>
             </label>
@@ -158,27 +154,21 @@ const ShopFilter = ({ onFilterChange }) => {
       </FilterSection>
 
       {/* Brand Filter */}
-      <FilterSection title="Brand" section="brand">
-        <div className="space-y-2">
+      <FilterSection title="Popular Tag" section="brand">
+        <div className="space-y-2 flex flex-wrap gap-1 items-center">
           {brands.map((brand) => (
-            <label
+            <button
               key={brand}
-              className="flex items-center gap-3 cursor-pointer group"
+              className="py-2 px-4 bg-gray-200 text-sm rounded-full transition-colors cursor-pointer hover:bg-(--main-color) hover:text-white"
             >
-              <input
-                type="checkbox"
-                className="w-4 h-4 accent-[var(--main-color)] rounded cursor-pointer"
-              />
-              <span className="text-sm text-gray-600 group-hover:text-(--main-color) transition-colors">
-                {brand}
-              </span>
-            </label>
+              {brand.name}
+            </button>
           ))}
         </div>
       </FilterSection>
 
       {/* Clear Filters */}
-      <button className="w-full mt-6 py-2 border border-gray-300 text-gray-800 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors">
+      <button className="w-full mt-6 py-2 border border-gray-300 text-gray-800 rounded-lg text-sm font-semibold cursor-pointer hover:text-white hover:bg-red-500 transition-colors">
         Clear All Filters
       </button>
     </aside>

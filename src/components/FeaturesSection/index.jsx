@@ -30,11 +30,14 @@ const Featuers = () => {
       <div className="container mx-auto px-3 md:px-0">
         <div className="bg-white p-10 shadow-lg rounded-md grid md:grid-cols-4 gap-5">
           {features.map(({ icon, title, description }, id) => (
-            <div key={id} className="flex items-center gap-3">
+            <div
+              key={id}
+              className={`flex items-center gap-3 ${id === 3 ? "" : "pb-4 md:pb-0"}`}
+            >
               <div className="text-(--main-color) text-4xl">{icon}</div>
               <div>
                 <h3 className="font-bold">{title}</h3>
-                <p className="text-gray-500">{description}</p>
+                <p className="text-gray-500 text-sm">{description}</p>
               </div>
             </div>
           ))}

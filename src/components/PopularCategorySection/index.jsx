@@ -1,22 +1,21 @@
 import React from "react";
 import Title from "../SectionsTitle";
 import Card from "./PopularCategoryCard";
-import { images } from "../../assets/images";
 
 const PopularCtegories = () => {
   const categories = [
-    { image: images.fruits, title: "Fresh Fruite" },
-    { image: images.vegetables, title: "Fresh Vegetables" },
-    { image: images.meat, title: "Meat & Fish" },
-    { image: images.snacks, title: "Snacks" },
-    { image: images.drinks, title: "Beverages" },
-    { image: images.beauty, title: "Beauty & Health" },
-    { image: images.bread, title: "Bread & Bakery" },
-    { image: images.baking, title: "Baking Needs" },
-    { image: images.cooking, title: "Cooking" },
-    { image: images.diabetic, title: "Diabetic Food" },
-    { image: images.soap, title: "Dish Detergents" },
-    { image: images.oil, title: "Oil" },
+    { image: "/fruites.png", title: "Fresh Fruite" },
+    { image: "/vegetables.png", title: "Fresh Vegetables" },
+    { image: "/meat-fish.png", title: "Meat & Fish" },
+    { image: "/snacks.png", title: "Snacks" },
+    { image: "/drinks.png", title: "Beverages" },
+    { image: "/beauty-health.png", title: "Beauty & Health" },
+    { image: "/bread.png", title: "Bread & Bakery" },
+    { image: "/baking-needs.png", title: "Baking Needs" },
+    { image: "/cooking.png", title: "Cooking" },
+    { image: "/diabetic-foods.png", title: "Diabetic Food" },
+    { image: "/soap.png", title: "Dish Detergents" },
+    { image: "/oil.png", title: "Oil" },
   ];
 
   return (

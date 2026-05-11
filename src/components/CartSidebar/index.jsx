@@ -44,7 +44,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+    <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
       <div className="bg-white w-full max-w-md h-full overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">

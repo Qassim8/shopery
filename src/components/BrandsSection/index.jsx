@@ -11,7 +11,7 @@ const brands = [
 
 const BrandLogos = () => {
   return (
-    <div className="container py-8 border-y border-gray-100 flex justify-between items-center gap-12 grayscale opacity-50">
+    <div className="container py-8 border-y border-gray-100 flex flex-wrap justify-between items-center gap-12 grayscale opacity-50">
       {brands.map((brand) => (
         <img src={brand.img} key={brand.name} />
       ))}

@@ -1,5 +1,6 @@
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router";
 
 const NavHead = () => {
   return (
@@ -11,19 +12,14 @@ const NavHead = () => {
         </p>
       </div>
       <div className="flex justify-center md:justify-end gap-4 text-sm">
-        <div className="flex items-center gap-1.5 cursor-pointer">
-          <span>Eng</span>
-          <IoIosArrowDown />
-        </div>
-        <div className="flex items-center gap-1.5 cursor-pointer">
-          <span>USD</span>
-          <IoIosArrowDown />
-        </div>
-        <div className="w-px bg-gray-200"></div>
         <div className="flex items-center gap-1">
-          <span className="cursor-pointer">Sign In</span>
+          <Link to={"/signin"} className="cursor-pointer">
+            Sign In
+          </Link>
           <span>/</span>
-          <span className="cursor-pointer">Sign Up</span>
+          <Link to={"/signup"} className="cursor-pointer">
+            Sign Up
+          </Link>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import ShopNowBtn from "../ShopNowBtn";
 
 const AddsSection = () => {
   return (
-    <section className="py-10">
+    <section className="py-8">
       <div className="container mx-auto px-3 md:px-0 grid md:grid-cols-3 gap-5">
         <div className="relative h-90 md:h-150 rounded-[10px] p-10 bg-[url('/first-add.jpg')] bg-cover overflow-hidden md:col-span-2 md:row-span-2">
           <div className="absolute top-0 start-0 w-full h-full bg-linear-to-r from-black/60 to-slate-50/5 "></div>

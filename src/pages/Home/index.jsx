@@ -20,7 +20,7 @@ const Home = () => {
       <PopularProducts />
       <BestDeals />
       <HotDeals />
-      <section className="h-[60vh] py-10">
+      <section className="h-[40vh] md:h-[60vh] py-10">
         <div className="container h-full">
           <img src={image} alt="" srcset="" className="h-full w-full" />
         </div>

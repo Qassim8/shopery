@@ -13,10 +13,10 @@ const MainNav = () => {
   return (
     <>
       <div className="flex flex-col lg:flex-row gap-5 items-center justify-between py-6">
-        <div className="hidden md:flex gap-2 items-center">
+        <Link to="/" className="hidden md:flex gap-2 items-center">
           <img className="w-full object-contain" src={LogoIcon} />
           <h2 className="text-3xl font-medium">Ecobazar</h2>
-        </div>
+        </Link>
         {/* Search Bar */}
         <SearchBar />
         <div className="flex items-center gap-4">

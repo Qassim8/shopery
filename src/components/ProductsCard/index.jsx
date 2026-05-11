@@ -31,19 +31,19 @@ const ProductCard = ({ item }) => {
               ))}
             </div>
           </div>
-          <div className="w-10 h-10 flex justify-center items-center bg-gray-200 rounded-full transition-colors duration-300 cursor-pointer group-hover:bg-(--main-color) group-hover:text-white">
-            <HiOutlineShoppingBag />
+          <div className="w-8 md:w-10 h-8 md:h-10 flex justify-center items-center bg-gray-200 rounded-full transition-colors duration-300 cursor-pointer group-hover:bg-(--main-color) group-hover:text-white">
+            <HiOutlineShoppingBag className="text-sm md:text-[16px]" />
           </div>
         </div>
         <div className="absolute top-3 right-3 md:opacity-0 group-hover:md:opacity-100 flex flex-col gap-3 transition-opacity duration-300">
-          <div className="w-10 h-10 flex justify-center items-center bg-gray-100 rounded-full cursor-pointer">
-            <BsHeart />
+          <div className="w-7 md:w-10 h-7 md:h-10 flex justify-center items-center bg-gray-100 rounded-full cursor-pointer">
+            <BsHeart className="text-sm md:text-[16px]" />
           </div>
           <button
             onClick={openModal}
-            className="w-10 h-10 flex justify-center items-center bg-gray-100 rounded-full cursor-pointer hover:bg-[var(--main-color)] hover:text-white transition-colors"
+            className="w-7 md:w-10 h-7 md:h-10 flex justify-center items-center bg-gray-100 rounded-full cursor-pointer hover:bg-(--main-color) hover:text-white transition-colors"
           >
-            <PiEye />
+            <PiEye className="text-sm md:text-[16px]" />
           </button>
         </div>
       </div>

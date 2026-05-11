@@ -64,59 +64,16 @@ const SignIn = () => {
 
   return (
     <AppLayout showMenuNav={false} showNewsletter={false} showFooter={false}>
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className=" flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
+            <h2 className="text-lg md:text-3xl font-bold text-gray-900">
+              Welcome Back
+            </h2>
             <p className="mt-2 text-sm text-gray-600">
               Sign in to your account to continue shopping
             </p>
-          </div>
-
-          {/* Social Login */}
-          <div className="space-y-3">
-            <button
-              onClick={() => handleSocialLogin("Google")}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <BsGoogle className="text-red-500" />
-              <span className="text-gray-700 font-medium">
-                Continue with Google
-              </span>
-            </button>
-
-            <button
-              onClick={() => handleSocialLogin("Facebook")}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <BsFacebook className="text-blue-600" />
-              <span className="text-gray-700 font-medium">
-                Continue with Facebook
-              </span>
-            </button>
-
-            <button
-              onClick={() => handleSocialLogin("Apple")}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <BsApple className="text-black" />
-              <span className="text-gray-700 font-medium">
-                Continue with Apple
-              </span>
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-gray-50 text-gray-500">
-                Or continue with email
-              </span>
-            </div>
           </div>
 
           {/* Sign In Form */}
@@ -141,7 +98,7 @@ const SignIn = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)] ${
+                  className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color) ${
                     errors.email ? "border-red-300" : "border-gray-300"
                   }`}
                   placeholder="Enter your email"
@@ -172,7 +129,7 @@ const SignIn = () => {
                   required
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)] ${
+                  className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color) ${
                     errors.password ? "border-red-300" : "border-gray-300"
                   }`}
                   placeholder="Enter your password"
@@ -195,7 +152,7 @@ const SignIn = () => {
             </div>
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center">
                 <input
                   id="remember-me"
@@ -203,7 +160,7 @@ const SignIn = () => {
                   type="checkbox"
                   checked={formData.rememberMe}
                   onChange={handleInputChange}
-                  className="h-4 w-4 text-[var(--main-color)] focus:ring-[var(--main-color)] border-gray-300 rounded"
+                  className="h-4 w-4 text-(--main-color) focus:ring-(--main-color) border-gray-300 rounded"
                 />
                 <label
                   htmlFor="remember-me"
@@ -216,7 +173,7 @@ const SignIn = () => {
               <div className="text-sm">
                 <Link
                   to="/forgot-password"
-                  className="text-[var(--main-color)] hover:text-green-700 font-medium"
+                  className="text-(--main-color) hover:text-green-700 font-medium"
                 >
                   Forgot your password?
                 </Link>
@@ -226,7 +183,7 @@ const SignIn = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[var(--main-color)] hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--main-color)] transition-colors"
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full cursor-pointer shadow-sm text-sm font-medium text-white bg-(--main-color) hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-(--main-color) transition-colors"
             >
               Sign In
             </button>
@@ -238,7 +195,7 @@ const SignIn = () => {
               Don't have an account?{" "}
               <Link
                 to="/signup"
-                className="text-[var(--main-color)] hover:text-green-700 font-medium"
+                className="text-(--main-color) hover:text-green-700 font-medium"
               >
                 Sign up now
               </Link>

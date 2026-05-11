@@ -31,10 +31,12 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/orders" element={<OrderHistory />} />
-          <Route path="/orders/:orderId" element={<OrderDetails />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/dashboard">
+            <Route index element={<Dashboard />} />
+            <Route path="orders-history" element={<OrderHistory />} />
+            <Route path="orders/:orderId" element={<OrderDetails />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
           <Route path="/faq" element={<FAQ />} />
           <Route path="/blogs" element={<h2>blogs</h2>} />
           <Route path="*" element={<NotFound />} />

@@ -13,7 +13,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="relative">
           {/* Close Button */}
@@ -30,7 +30,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
               <img
                 src={product.image}
                 alt={product.title}
-                className="max-w-full h-80 object-contain"
+                className="max-w-full h-40 md:h-70 object-contain"
               />
             </div>
 
@@ -64,35 +64,30 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                 </p>
               </div>
 
-              {/* Quantity Selector */}
-              <div className="flex items-center gap-4">
-                <span className="font-semibold text-gray-800">Quantity:</span>
-                <div className="flex items-center border border-gray-200 rounded-lg">
+              {/* Action Buttons */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="grow flex items-center justify-between border border-gray-200 rounded-full p-1">
                   <button
                     onClick={decreaseQuantity}
-                    className="w-10 h-10 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    className="w-7 h-7 flex items-center justify-center rounded-full cursor-pointer bg-gray-200 hover:bg-gray-50 transition-colors"
                   >
                     <HiMinus className="text-sm" />
                   </button>
-                  <span className="w-12 text-center font-semibold">
+                  <span className="w-10 text-center font-semibold">
                     {quantity}
                   </span>
                   <button
                     onClick={increaseQuantity}
-                    className="w-10 h-10 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    className="w-7 h-7 flex items-center justify-center rounded-full cursor-pointer bg-gray-200 hover:bg-gray-50 transition-colors"
                   >
                     <HiPlus className="text-sm" />
                   </button>
                 </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-3">
-                <button className="flex-1 bg-[var(--main-color)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
-                  <HiOutlineShoppingBag />
+                <button className="grow bg-(--main-color) text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
                   Add to Cart
+                  <HiOutlineShoppingBag />
                 </button>
-                <button className="w-12 h-12 border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors">
+                <button className="w-10 h-10 bg-(--main-color)/10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors">
                   <BsHeart />
                 </button>
               </div>
