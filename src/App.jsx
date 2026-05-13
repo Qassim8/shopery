@@ -15,6 +15,7 @@ import OrderDetails from "./pages/OrderDetails";
 import Settings from "./pages/Settings";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
+import Main from "./pages/Dashboard/Main";
 
 export default function App() {
   return (
@@ -31,10 +32,12 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard">
-            <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Main />} />
             <Route path="orders-history" element={<OrderHistory />} />
-            <Route path="orders/:orderId" element={<OrderDetails />} />
+            <Route path="orders-history/:orderId" element={<OrderDetails />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="cart" element={<Cart />} />
             <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="/faq" element={<FAQ />} />

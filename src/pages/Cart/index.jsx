@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-table";
 import AppLayout from "../../components/AppLayout";
 import Breadcrumb from "../../components/Breadcrumb";
+import CartTable from "../../components/CartTable";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([
@@ -189,45 +190,7 @@ const Cart = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Cart Table */}
               <div className="lg:col-span-2 bg-white rounded-lg shadow overflow-hidden ">
-                {/* Desktop View */}
-                <div className="overflow-x-auto">
-                  <table className="w-full border border-gray-200 overflow-x-scroll">
-                    <thead className="border-b border-gray-200">
-                      {table.getHeaderGroups().map((headerGroup) => (
-                        <tr key={headerGroup.id}>
-                          {headerGroup.headers.map((header) => (
-                            <th
-                              key={header.id}
-                              className="px-4 py-4 text-left font-normal text-gray-500"
-                            >
-                              {flexRender(
-                                header.column.columnDef.header,
-                                header.getContext(),
-                              )}
-                            </th>
-                          ))}
-                        </tr>
-                      ))}
-                    </thead>
-                    <tbody>
-                      {table.getRowModel().rows.map((row) => (
-                        <tr
-                          key={row.id}
-                          className="border-b border-gray-200 hover:bg-gray-50 transition"
-                        >
-                          {row.getVisibleCells().map((cell) => (
-                            <td key={cell.id} className="px-4 py-4">
-                              {flexRender(
-                                cell.column.columnDef.cell,
-                                cell.getContext(),
-                              )}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <CartTable table={table} />
               </div>
 
               {/* Order Summary */}

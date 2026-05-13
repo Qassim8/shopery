@@ -11,20 +11,16 @@ import {
 import { HiOutlinePhone, HiOutlineLockClosed } from "react-icons/hi2";
 import AppLayout from "../../components/AppLayout";
 import { HiOutlineMail } from "react-icons/hi";
+import AccountInfo from "../../components/Settings/AccountInfo";
+import BillingAddress from "../../components/Settings/BillingAddress";
+import ChangePassword from "../../components/Settings/ChangePassword";
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [profileData, setProfileData] = useState({
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@example.com",
-    phone: "+1 (555) 123-4567",
-    dateOfBirth: "1990-01-01",
-    gender: "male",
-  });
+
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -51,14 +47,6 @@ const Settings = () => {
     { id: "privacy", label: "Privacy", icon: BsEye },
   ];
 
-  const handleProfileChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
     setPasswordData((prev) => ({
@@ -81,13 +69,6 @@ const Settings = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-  };
-
-  const handleProfileSubmit = (e) => {
-    e.preventDefault();
-    // Handle profile update
-    console.log("Profile updated:", profileData);
-    alert("Profile updated successfully!");
   };
 
   const handlePasswordSubmit = (e) => {
@@ -119,167 +100,6 @@ const Settings = () => {
     console.log("Privacy settings updated:", privacy);
     alert("Privacy settings updated!");
   };
-
-  const renderProfile = () => (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          Profile Information
-        </h2>
-        <p className="text-gray-600">
-          Update your personal information and contact details.
-        </p>
-      </div>
-
-      <form onSubmit={handleProfileSubmit} className="space-y-6">
-        {/* Profile Picture */}
-        <div className="flex items-center gap-6">
-          <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center">
-            <BsPerson className="text-3xl text-gray-400" />
-          </div>
-          <div>
-            <button
-              type="button"
-              className="px-4 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              Change Photo
-            </button>
-            <p className="text-sm text-gray-500 mt-2">
-              JPG, PNG or GIF. Max size 2MB.
-            </p>
-          </div>
-        </div>
-
-        {/* Personal Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label
-              htmlFor="firstName"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={profileData.firstName}
-              onChange={handleProfileChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={profileData.lastName}
-              onChange={handleProfileChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Email Address
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <HiOutlineMail className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={profileData.email}
-                onChange={handleProfileChange}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Phone Number
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <HiOutlinePhone className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={profileData.phone}
-                onChange={handleProfileChange}
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor="dateOfBirth"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              id="dateOfBirth"
-              name="dateOfBirth"
-              value={profileData.dateOfBirth}
-              onChange={handleProfileChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="gender"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Gender
-            </label>
-            <select
-              id="gender"
-              name="gender"
-              value={profileData.gender}
-              onChange={handleProfileChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-              <option value="prefer-not-to-say">Prefer not to say</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            className="px-6 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Save Changes
-          </button>
-        </div>
-      </form>
-    </div>
-  );
 
   const renderSecurity = () => (
     <div className="space-y-6">
@@ -315,7 +135,7 @@ const Settings = () => {
                 name="currentPassword"
                 value={passwordData.currentPassword}
                 onChange={handlePasswordChange}
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color)"
               />
               <button
                 type="button"
@@ -348,7 +168,7 @@ const Settings = () => {
                 name="newPassword"
                 value={passwordData.newPassword}
                 onChange={handlePasswordChange}
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color)"
               />
               <button
                 type="button"
@@ -381,7 +201,7 @@ const Settings = () => {
                 name="confirmPassword"
                 value={passwordData.confirmPassword}
                 onChange={handlePasswordChange}
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color)"
               />
               <button
                 type="button"
@@ -400,7 +220,7 @@ const Settings = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-6 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="px-6 py-2 bg-(--main-color) text-white rounded-lg hover:bg-green-700 transition-colors"
             >
               Change Password
             </button>
@@ -422,7 +242,7 @@ const Settings = () => {
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" className="sr-only peer" />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
           </label>
         </div>
       </div>
@@ -491,7 +311,7 @@ const Settings = () => {
                   onChange={handleNotificationChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
 
@@ -510,7 +330,7 @@ const Settings = () => {
                   onChange={handleNotificationChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
 
@@ -529,7 +349,7 @@ const Settings = () => {
                   onChange={handleNotificationChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
           </div>
@@ -556,7 +376,7 @@ const Settings = () => {
                   onChange={handleNotificationChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
           </div>
@@ -565,7 +385,7 @@ const Settings = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-6 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors"
+            className="px-6 py-2 bg-(--main-color) text-white rounded-lg hover:bg-green-700 transition-colors"
           >
             Save Preferences
           </button>
@@ -604,7 +424,7 @@ const Settings = () => {
                 name="profileVisibility"
                 value={privacy.profileVisibility}
                 onChange={handlePrivacyChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-(--main-color) focus:border-(--main-color)"
               >
                 <option value="public">Public</option>
                 <option value="friends">Friends Only</option>
@@ -629,7 +449,7 @@ const Settings = () => {
                   onChange={handlePrivacyChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
           </div>
@@ -658,7 +478,7 @@ const Settings = () => {
                   onChange={handlePrivacyChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
 
@@ -677,7 +497,7 @@ const Settings = () => {
                   onChange={handlePrivacyChange}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[var(--main-color)]/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--main-color)]"></div>
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-(--main-color)/25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-(--main-color)"></div>
               </label>
             </div>
           </div>
@@ -714,7 +534,7 @@ const Settings = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-6 py-2 bg-[var(--main-color)] text-white rounded-lg hover:bg-green-700 transition-colors"
+            className="px-6 py-2 bg-(--main-color) text-white rounded-lg hover:bg-green-700 transition-colors"
           >
             Save Privacy Settings
           </button>
@@ -739,39 +559,11 @@ const Settings = () => {
   };
 
   return (
-    <AppLayout>
-      <div className="container py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar */}
-          <div className="lg:w-1/4">
-            <div className="bg-white p-6 rounded-lg shadow-sm border">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">
-                Settings
-              </h2>
-              <nav className="space-y-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                      activeTab === tab.id
-                        ? "bg-[var(--main-color)] text-white"
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    <tab.icon className="text-xl" />
-                    {tab.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="lg:w-3/4">{renderContent()}</div>
-        </div>
-      </div>
-    </AppLayout>
+    <div className="flex flex-col gap-5">
+      <AccountInfo />
+      <BillingAddress />
+      <ChangePassword />
+    </div>
   );
 };
 
